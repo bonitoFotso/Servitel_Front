@@ -19,53 +19,51 @@ import API_URL from 'src/config';
 
 import SelectField from 'src/components/form/SelectField';
 
-const ActiviteComponent = ({ values, onChange }) => {
-  const [activites, setActivites] = useState([]);
-  const [newActivite, setNewActivite] = useState({ name: '', description: '' });
+const CategorieComponent = ({ values, onChange }) => {
+  const [categories, setCategories] = useState([]);
+  const [newCategorie, setNewCategorie] = useState({ name: '', description: '' });
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
-    // Charger toutes les activités lors du montage du composant
+    // Charger toutes les catégories lors du montage du composant
     setLoading(true);
-    Axios.get(`${API_URL}/activites/`)
+    Axios.get(`${API_URL}/categories/`)
       .then(response => {
-        setActivites(response.data);
+        setCategories(response.data);
         setLoading(false);
       })
       .catch(err => {
-        console.error('Erreur lors du chargement des activités', err);
-        setError('Une erreur s\'est produite lors du chargement des activités.');
+        console.error('Erreur lors du chargement des catégories', err);
+        setError('Une erreur s\'est produite lors du chargement des catégories.');
         setLoading(false);
       });
   }, []);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setNewActivite(prevState => ({ ...prevState, [name]: value }));
+    setNewCategorie(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleCreateActivite = () => {
+  const handleCreateCategorie = () => {
     setLoading(true);
     setError(null);
 
-    // Envoyer une requête POST pour créer une nouvelle activité
-    Axios.post(`${API_URL}/activites/`, newActivite)
+    // Envoyer une requête POST pour créer une nouvelle catégorie
+    Axios.post(`${API_URL}/categories/`, newCategorie)
       .then(response => {
-        setActivites(prevState => [...prevState, response.data]);
-        setNewActivite({ name: '', description: '' });
+        setCategories(prevState => [...prevState, response.data]);
+        setNewCategorie({ name: '', description: '' });
         setTimeout(() => {
-            setDialogOpen(false);
-            setLoading(false);
-          }, 1500);
+          setDialogOpen(false);
+          setLoading(false);
+        }, 1500);
       })
       .catch(err => {
-        console.error('Erreur lors de la création de l\'activité', err);
-        setError('Une erreur s\'est produite lors de la création de l\'activité.');
+        console.error('Erreur lors de la création de la catégorie', err);
+        setError('Une erreur s\'est produite lors de la création de la catégorie.');
         setLoading(false);
-
       });
   };
 
@@ -83,10 +81,10 @@ const ActiviteComponent = ({ values, onChange }) => {
       <Grid item xs={12} paddingBottom={2} display="flex" justifyContent="center" alignItems="center">
         <Grid item xs={10}>
           <SelectField
-            name="activite"
-            label="Activités"
+            name="categorie"
+            label="Catégories"
             value={values}
-            options={activites}
+            options={categories}
             onChange={onChange}
             multiple
           />
@@ -98,7 +96,7 @@ const ActiviteComponent = ({ values, onChange }) => {
         </Grid>
       </Grid>
       <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
-        <DialogTitle>Créer une nouvelle activité</DialogTitle>
+        <DialogTitle>Créer une nouvelle catégorie</DialogTitle>
         <DialogContent>
           {loading && <LinearProgress />} {/* Ajout d'un indicateur de chargement */}
           {error && (
@@ -111,18 +109,18 @@ const ActiviteComponent = ({ values, onChange }) => {
               <TextField
                 type="text"
                 name="name"
-                value={newActivite.name}
+                value={newCategorie.name}
                 onChange={handleInputChange}
-                placeholder="Nom de l'activité"
+                placeholder="Nom de la catégorie"
                 fullWidth
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 name="description"
-                value={newActivite.description}
+                value={newCategorie.description}
                 onChange={handleInputChange}
-                placeholder="Description de l'activité"
+                placeholder="Description de la catégorie"
                 fullWidth
                 multiline
                 rows={4}
@@ -134,7 +132,7 @@ const ActiviteComponent = ({ values, onChange }) => {
           <Button onClick={handleCloseDialog} disabled={loading}>
             Annuler
           </Button>
-          <Button onClick={handleCreateActivite} variant="contained" color="primary" disabled={loading}>
+          <Button onClick={handleCreateCategorie} variant="contained" color="primary" disabled={loading}>
             Créer
           </Button>
         </DialogActions>
@@ -143,9 +141,9 @@ const ActiviteComponent = ({ values, onChange }) => {
   );
 };
 
-ActiviteComponent.propTypes = {
+CategorieComponent.propTypes = {
   onChange: PropTypes.any,
   values: PropTypes.any,
 };
 
-export default ActiviteComponent;
+export default CategorieComponent;

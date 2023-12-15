@@ -25,7 +25,7 @@ const SelectField = ({
    }
 
    return (
-      <FormControl fullWidth>
+      <FormControl fullWidth >
          <InputLabel id={`${name}-label`}>{label}</InputLabel>
          <Select
             labelId={`${name}-label`}
@@ -35,7 +35,7 @@ const SelectField = ({
             name={name}
             error={error && Boolean(error)}
             multiple={multiple}
-            variant="standard"
+            variant="outlined"
          >
             {defaultOptionLabel && (
                <MenuItem value="" disabled>

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 
 import {
+  Box,
   Button,
   Dialog,
   TextField,
@@ -13,6 +14,7 @@ import {
 import SelectField from 'src/components/form/SelectField';
 import DateTimeField from 'src/components/form/DateTimeField';
 import ActiviteComponent from 'src/components/form/ActiviteComponent';
+import CategorieComponent from 'src/components/form/CategorieComponent';
 import { statusOptions, priorityOptions } from 'src/components/form/options';
 
 
@@ -24,6 +26,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
     name: '',
     status: 'En attente',
     activite: [],
+    categorie: [],
     priorite: 'Moyen',
     description: '',
     n_OS: '',
@@ -37,6 +40,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
       setFormData({
         name: task.name || '',
         activite: task.activite || [],
+        categorie: task.categorie || [],
         status: task.status || 'En attente',
         priorite: task.priorite || 'Moyen',
         description: task.description || '',
@@ -62,7 +66,9 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>{task ? 'Modifier la tâche' : 'Créer une nouvelle tâche'}</DialogTitle>
       <DialogContent>
+        <Box sx={{ p: 2 }}>
         <ActiviteComponent values={formData.activite} onChange={handleChange} />
+        <CategorieComponent values={formData.categorie} onChange={handleChange} />
         <TextField
           fullWidth
           label="Nom de la tâche"
@@ -112,7 +118,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
         value={formData.date_fin}
         onChange={handleChange}
         />
-        
+        </Box>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Annuler</Button>
