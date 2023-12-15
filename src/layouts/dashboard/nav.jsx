@@ -63,7 +63,10 @@ export default function Nav({ openNav, onCloseNav }) {
   );
 
   const renderMenu = (
-    <Stack component="nav" spacing={0.5} sx={{ px: 2 }}>
+    <Stack component="nav" spacing={0.5} sx={{
+        px: 2, 
+        }}
+      >
       {navConfig.map((item) => (
         <NavItem key={item.title} item={item} />
       ))}
@@ -127,6 +130,7 @@ export default function Nav({ openNav, onCloseNav }) {
       sx={{
         flexShrink: { lg: 0 },
         width: { lg: NAV.WIDTH },
+        bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
       }}
     >
       {upLg ? (

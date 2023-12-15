@@ -12,7 +12,7 @@ export const Page404 = lazy(() => import('src/pages/page-not-found'));
 export const TachePage = lazy(() => import('src/pages/taches'));
 export const CliensPage = lazy(() => import('src/pages/clients'));
 export const TechniciensPage = lazy(() => import('src/pages/techniciens'));
-
+export const TestPage = lazy(() => import('src/pages/test'))
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -33,6 +33,7 @@ export default function Router() {
         { path: 'taches', element: <TachePage /> },
         { path: 'clients', element: <CliensPage /> },
         { path: 'techniciens', element: <TechniciensPage /> },
+        { path: 'test', element: <TestPage /> },
       ],
     },
     {

@@ -1,9 +1,5 @@
 import { alpha } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
-
-// SETUP COLORS
-
 export const grey = {
   0: '#FFFFFF',
   100: '#F9FAFB',
@@ -18,56 +14,56 @@ export const grey = {
 };
 
 export const primary = {
-  lighter: '#D0ECFE',
-  light: '#73BAFB',
-  main: '#1877F2',
-  dark: '#0C44AE',
-  darker: '#042174',
+  lighter: '#E6F7FF',
+  light: '#6BB1FF',
+  main: '#007BFF',
+  dark: '#0058CC',
+  darker: '#003D99',
   contrastText: '#FFFFFF',
 };
 
 export const secondary = {
-  lighter: '#EFD6FF',
-  light: '#C684FF',
-  main: '#8E33FF',
-  dark: '#5119B7',
-  darker: '#27097A',
+  lighter: '#FFDAF2',
+  light: '#FF5C8D',
+  main: '#D6336C',
+  dark: '#9E004E',
+  darker: '#670026',
   contrastText: '#FFFFFF',
 };
 
 export const info = {
-  lighter: '#CAFDF5',
-  light: '#61F3F3',
-  main: '#00B8D9',
-  dark: '#006C9C',
-  darker: '#003768',
+  lighter: '#D6F3FD',
+  light: '#80C7F7',
+  main: '#1890FF',
+  dark: '#0C53B7',
+  darker: '#04297A',
   contrastText: '#FFFFFF',
 };
 
 export const success = {
-  lighter: '#C8FAD6',
-  light: '#5BE49B',
-  main: '#00A76F',
-  dark: '#007867',
-  darker: '#004B50',
+  lighter: '#D9FAD5',
+  light: '#4CAF50',
+  main: '#008B3E',
+  dark: '#005E27',
+  darker: '#003D19',
   contrastText: '#FFFFFF',
 };
 
 export const warning = {
   lighter: '#FFF5CC',
-  light: '#FFD666',
-  main: '#FFAB00',
-  dark: '#B76E00',
-  darker: '#7A4100',
+  light: '#FFC107',
+  main: '#FFA000',
+  dark: '#FF6F00',
+  darker: '#E65100',
   contrastText: grey[800],
 };
 
 export const error = {
-  lighter: '#FFE9D5',
-  light: '#FFAC82',
-  main: '#FF5630',
-  dark: '#B71D18',
-  darker: '#7A0916',
+  lighter: '#FFEBE6',
+  light: '#FF5A4C',
+  main: '#F44336',
+  dark: '#BA2724',
+  darker: '#7A1616',
   contrastText: '#FFFFFF',
 };
 
@@ -95,11 +91,9 @@ const base = {
   error,
   grey,
   common,
-  divider: alpha(grey[500], 0.2),
+  divider: alpha(grey[900], 0.2),
   action,
 };
-
-// ----------------------------------------------------------------------
 
 export function palette() {
   return {
@@ -111,9 +105,9 @@ export function palette() {
       disabled: grey[500],
     },
     background: {
-      paper: '#FFFFFF',
-      default: grey[100],
-      neutral: grey[200],
+      paper: '#FFF0F0',
+      default: grey[200],
+      neutral: grey[300],
     },
     action: {
       ...base.action,

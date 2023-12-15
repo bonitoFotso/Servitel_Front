@@ -15,7 +15,12 @@ const navConfig = [
   {
     title: 'taches',
     path: '/taches',
-    icon: icon('ic_analytics'),
+    icon: icon('tasks'),
+  },
+  {
+    title: 'test',
+    path: '/test',
+    icon: icon('test'),
   },
   {
     title: 'user',
@@ -25,12 +30,12 @@ const navConfig = [
   {
     title: 'clients',
     path: '/clients',
-    icon: icon('ic_user'),
+    icon: icon('users'),
   },
   {
     title: 'techniciens',
     path: '/techniciens',
-    icon: icon('ic_user'),
+    icon: icon('settings'),
   },
   {
     title: 'product',
