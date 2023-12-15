@@ -12,6 +12,7 @@ import {
 
 import SelectField from 'src/components/form/SelectField';
 import DateTimeField from 'src/components/form/DateTimeField';
+import ActiviteComponent from 'src/components/form/ActiviteComponent';
 import { statusOptions, priorityOptions } from 'src/components/form/options';
 
 
@@ -22,6 +23,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
   const [formData, setFormData] = useState({
     name: '',
     status: 'En attente',
+    activite: [],
     priorite: 'Moyen',
     description: '',
     n_OS: '',
@@ -34,6 +36,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
       // Si une tâche est fournie, remplir le formulaire avec les données de la tâche
       setFormData({
         name: task.name || '',
+        activite: task.activite || [],
         status: task.status || 'En attente',
         priorite: task.priorite || 'Moyen',
         description: task.description || '',
@@ -47,6 +50,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    console.log(name,value);
   };
 
   const handleSave = () => {
@@ -58,6 +62,7 @@ const TaskForm = ({ open, handleClose, onSave, task }) => {
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>{task ? 'Modifier la tâche' : 'Créer une nouvelle tâche'}</DialogTitle>
       <DialogContent>
+        <ActiviteComponent values={formData.activite} onChange={handleChange} />
         <TextField
           fullWidth
           label="Nom de la tâche"

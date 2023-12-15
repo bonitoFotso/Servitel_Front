@@ -9,7 +9,7 @@ const SelectField = ({
    onChange,
    options,
    error,
-   multiple = false,
+   multiple ,
    defaultOptionLabel = 'Sélectionnez ....',
    optionsType = 'default' // Ajout de la nouvelle prop optionsType avec une valeur par défaut
 }) => {
