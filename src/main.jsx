@@ -3,6 +3,8 @@ import { Suspense, StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
+import ErrorBoundary from './ErrorBoundary';  // Importez le composant ErrorBoundary
+
 import App from './app';
 
 // ----------------------------------------------------------------------
@@ -14,7 +16,9 @@ root.render(
     <HelmetProvider>
       <BrowserRouter>
         <Suspense>
+        <ErrorBoundary>
           <App />
+        </ErrorBoundary>
         </Suspense>
       </BrowserRouter>
     </HelmetProvider>

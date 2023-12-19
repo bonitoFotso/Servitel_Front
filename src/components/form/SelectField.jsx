@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { Grid, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 
 const SelectField = ({
    label,
@@ -9,7 +9,7 @@ const SelectField = ({
    onChange,
    options,
    error,
-   multiple ,
+   multiple,
    defaultOptionLabel = 'Sélectionnez ....',
    optionsType = 'default' // Ajout de la nouvelle prop optionsType avec une valeur par défaut
 }) => {
@@ -25,31 +25,34 @@ const SelectField = ({
    }
 
    return (
-      <FormControl fullWidth >
-         <InputLabel id={`${name}-label`}>{label}</InputLabel>
-         <Select
-            labelId={`${name}-label`}
-            id={name}
-            value={value}
-            onChange={onChange}
-            name={name}
-            error={error && Boolean(error)}
-            multiple={multiple}
-            variant="outlined"
-         >
-            {defaultOptionLabel && (
-               <MenuItem value="" disabled>
-                  {defaultOptionLabel}
-               </MenuItem>
-            )}
-            {options.map((option) => (
-               <MenuItem key={option[valueKey]} value={option[valueKey]}>
-                  {option[labelKey]}
-               </MenuItem>
-            ))}
-         </Select>
-         
-      </FormControl>
+      <Grid container spacing={2}>
+         <Grid item xs={12} paddingBottom={2}>
+            <FormControl fullWidth>
+               <InputLabel id={`${name}-label`}>{label}</InputLabel>
+               <Select
+                  labelId={`${name}-label`}
+                  id={name}
+                  value={value}
+                  onChange={onChange}
+                  name={name}
+                  error={error && Boolean(error)}
+                  multiple={multiple}
+                  variant="outlined"
+               >
+                  {defaultOptionLabel && (
+                     <MenuItem value="" disabled>
+                        {defaultOptionLabel}
+                     </MenuItem>
+                  )}
+                  {options.map((option) => (
+                     <MenuItem key={option[valueKey]} value={option[valueKey]}>
+                        {option[labelKey]}
+                     </MenuItem>
+                  ))}
+               </Select>
+            </FormControl>
+         </Grid>
+      </Grid>
    );
 };
 

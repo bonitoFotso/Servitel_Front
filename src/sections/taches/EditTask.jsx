@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { useState } from 'react';
 
 import { Button } from '@mui/material';
@@ -5,7 +6,7 @@ import Container from '@mui/material/Container';
 
 import TaskForm from 'src/sections/taches/components/form/TaskForm'
 
-export default function TestView() {
+export default function ViewTask({ task }) {
     const [open, setOpen] = useState(false);
 
 
@@ -32,4 +33,7 @@ export default function TestView() {
             <TaskForm open={open} handleClose={handleClose} onSave={onSave} />
         </Container>
     );
+}
+ViewTask.propTypes = {
+  task: PropTypes.any
 }

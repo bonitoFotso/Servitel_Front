@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 
+import TaskForm from 'src/sections/taches/components/form/TaskForm'
+
 import Nav from './nav';
 import Main from './main';
 import Header from './header';
+
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +29,7 @@ export default function DashboardLayout({ children }) {
         <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
 
         <Main>{children}</Main>
+        <TaskForm />
       </Box>
     </>
   );

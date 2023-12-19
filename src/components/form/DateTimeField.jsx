@@ -9,7 +9,7 @@ const DateTimeField = ({ label, name, value, onChange, error, helperText, requir
   return (
     <FormControl fullWidth style={{ margin }}>
       <TextField
-        variant="standard"
+        variant="outlined"
         label={label}
         id={name}
         name={name}
@@ -19,7 +19,9 @@ const DateTimeField = ({ label, name, value, onChange, error, helperText, requir
         error={Boolean(error)}
         helperText={error && helperText}
         required={required}
-        style={error && errorStyle}
+        style={{ marginTop: '10px' }}  // Ajout de la propriété marginTop pour déplacer le label vers le haut
+        InputLabelProps={{ shrink: true }} // Réduire le label pour qu'il ne soit pas au milieu
+        InputProps={{ style: { fontSize: 14 } }} // Ajuster la taille de la police du label
       />
     </FormControl>
   );

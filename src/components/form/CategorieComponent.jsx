@@ -78,7 +78,7 @@ const CategorieComponent = ({ values, onChange }) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} paddingBottom={2} display="flex" justifyContent="center" alignItems="center">
+      <Grid item xs={12}  display="flex" justifyContent="center" alignItems="center">
         <Grid item xs={10}>
           <SelectField
             name="categorie"
