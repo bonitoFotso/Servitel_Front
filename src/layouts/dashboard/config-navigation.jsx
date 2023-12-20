@@ -18,6 +18,21 @@ const navConfig = [
     icon: icon('tasks'),
   },
   {
+    title: 'categories',
+    path: '/categories',
+    icon: icon('tasks'),
+  },
+  {
+    title: 'activites',
+    path: '/activites',
+    icon: icon('tasks'),
+  },
+  {
+    title: 'taches-list',
+    path: '/taches-list',
+    icon: icon('tasks'),
+  },
+  {
     title: 'test',
     path: '/test',
     icon: icon('test'),

@@ -5,8 +5,11 @@ import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 
+import Sort from 'src/components/sort/Sort';
+
 import API_URL from '../../../config';
-import TaskCard from '../components/TaskCard';
+import TaskTab from '../components/TaskTab';
+// import TaskCard from '../components/TaskCard';
 
 
 
@@ -16,6 +19,17 @@ export default function TacheView() {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const handleSortChange = (sortOption, selectedFilter) => {
+    // Effectuez des actions spécifiques en fonction de la sélection de tri et de filtrage
+    console.log('Sort Option:', sortOption);
+    console.log('Selected Filter:', selectedFilter);
+
+    // Par exemple, vous pourriez déclencher une nouvelle requête avec les options de tri et de filtrage
+    // axios.get(`/api/taches?sort=${sortOption}&filter=${selectedFilter}`).then(response => {
+    //   // Faire quelque chose avec les données
+    // });
+  };
   useEffect(() => {
     const fetchTasks = async () => {
        try {
@@ -36,12 +50,10 @@ export default function TacheView() {
     <Container maxWidth="xl">
       <p>taches view</p>
       <Grid>
-        ff
+        <Sort setTasks={setTasks} />
       </Grid>
       <Grid container spacing={3}>
-      {tasks.map((task, index) => (
-        <TaskCard key={task.id} task={task} index={index} />
-      )) }
+        <TaskTab tasks={tasks}/>
     </Grid>
     </Container>
   );

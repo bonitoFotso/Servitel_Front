@@ -16,6 +16,10 @@ export const TachePage = lazy(() => import('src/pages/taches'));
 export const CliensPage = lazy(() => import('src/pages/clients'));
 export const TechniciensPage = lazy(() => import('src/pages/techniciens'));
 export const TestPage = lazy(() => import('src/pages/test'))
+export const TachesListPage = lazy(() => import('src/pages/taches-list'))
+export const CategoriePage = lazy(() => import('src/pages/categories'))
+export const ActivitesPage = lazy(() => import('src/pages/activites'))
+
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -39,6 +43,10 @@ export default function Router() {
         { path: 'clients', element: <CliensPage /> },
         { path: 'techniciens', element: <TechniciensPage /> },
         { path: 'test', element: <TestPage /> },
+        { path: 'taches-list', element: <TachesListPage /> },
+        { path: 'categories', element: <CategoriePage /> },
+        { path: 'activites', element: <ActivitesPage /> },
+
       ],
     },
     {
