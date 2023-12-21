@@ -71,5 +71,4 @@ PasswordField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.any
 }
-
 export default PasswordField;

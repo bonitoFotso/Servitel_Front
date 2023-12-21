@@ -60,25 +60,40 @@ export default function LoginView() {
   };
 
   const handleLogin = async () => {
-    if (validateForm()) {
-      try {
-        // Envoyer la requête de connexion
-        const response = await axios.post(`${API_URL}/categories/`, {
-          email,
-          password,
-        });
-
-        // Stocker les données utilisateur dans le stockage local (localStorage ou sessionStorage)
-        localStorage.setItem('user', JSON.stringify(response.data));
-
-        // Rediriger ou effectuer d'autres actions après la connexion réussie
-        router.push('/dashboard');
-      } catch (error) {
-        console.error('Error during login:', error);
-        // Gérer les erreurs de connexion
+    try {
+      // Validation du formulaire
+      if (!validateForm()) {
+        // Si la validation échoue, retourner ou effectuer des actions appropriées
+        return;
       }
+
+      // Envoyer la requête de connexion
+      const response = await axios.post(`${API_URL}/login/`, {
+        email,
+        password,
+      });
+
+      // Vérifier si la réponse contient des erreurs
+      if (response.data.errors) {
+        // Gérer les erreurs renvoyées par le serveur
+        console.error('Server errors:', response.data.errors);
+        // Vous pouvez également mettre à jour le state pour afficher des messages d'erreur à l'utilisateur
+        return;
+      }
+      // Stocker les données utilisateur dans le stockage local (localStorage ou sessionStorage)
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem('token', JSON.stringify(response.data.token.access));
+      // Stocker le token JWT dans les en-têtes des requêtes Axios pour les requêtes ultérieures
+      axios.defaults.headers.common.Authorization = `Bearer ${response.data.token.access}`;
+
+      // Rediriger ou effectuer d'autres actions après la connexion réussie
+      router.push('/');
+    } catch (error) {
+      console.error('Error during login:', error);
+      
     }
   };
+
 
   const renderForm = (
     <>

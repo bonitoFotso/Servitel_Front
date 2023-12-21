@@ -33,7 +33,16 @@ export default function TacheView() {
   useEffect(() => {
     const fetchTasks = async () => {
        try {
-          const response = await axios.get(`${API_URL}/taches/`); // Mettez l'URL correcte de votre API Django
+
+         const {token} = localStorage;
+
+          const response = await axios.get(`${API_URL}/taches/`,
+            {
+              headers: {
+                HTTP_AUTHORIZATION: `Bearer ${token}`,
+              },
+            }
+          ); // Mettez l'URL correcte de votre API Django
           setTasks(response.data);
           setLoading(false);
        // eslint-disable-next-line no-shadow
