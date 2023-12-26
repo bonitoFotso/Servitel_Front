@@ -7,7 +7,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import API_URL from 'src/config';          
 
-import TaskTab from 'src/sections/taches/components/TaskTab';
+import TaskTab from '../components/TaskListTab';
 
 export default function TechnicienTacheView() {
 
@@ -20,16 +20,19 @@ export default function TechnicienTacheView() {
         const fetchTasks = async () => {
             try {
 
-                const { token } = localStorage;
+                const token = localStorage.getItem('token') ;
+                console.log(token);
+                axios.defaults.headers.common.HTTP_AUTHORIZATION = `Bearer ${token}`;
 
                 const response = await axios.get(`${API_URL}/technicien-taches/`,
-                    {
-                        headers: {
-                            HTTP_AUTHORIZATION: `Bearer ${token}`,
-                        },
-                    }
+                    // {
+                    //     headers: {
+                    //         HTTP_AUTHORIZATION: `Bearer ${token}`,
+                    //     },
+                    // }
                 ); // Mettez l'URL correcte de votre API Django
                 setTasks(response.data);
+                console.log(response.data);
                 setLoading(false);
                 // eslint-disable-next-line no-shadow
             } catch (error) {

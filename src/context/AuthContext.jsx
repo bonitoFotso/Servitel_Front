@@ -29,6 +29,8 @@ export const AuthProvider = ({ children }) => {
     const logout = useCallback(() => {
         setUser(null);
         setToken(null);
+        localStorage.setItem('user', '');
+        localStorage.setItem('tech', '');
         localStorage.removeItem('token');
         localStorage.removeItem('refresh');
     }, []);
@@ -69,7 +71,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             updateToken();
-        }, 1000 * 60 * 15); // Rafraîchir toutes les 15 minutes
+        }, 1000 * 6 * 15); // Rafraîchir toutes les 15 minutes
 
         return () => clearInterval(intervalId);
 

@@ -79,11 +79,12 @@ const generateNavConfig = (isHelpdesk) => {
 
 
 const IsLogComponent = () => {
-  const user = localStorage.getItem('user')
-  console.log(user,'dd');
-  return user.helpdesk === 'true';
-};
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
 
+  console.log(user,'dd');
+  return user?.helpdesk === true || false;
+};
+console.log(IsLogComponent());
 
 const navConfig = generateNavConfig(IsLogComponent());
 
