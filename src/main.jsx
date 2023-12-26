@@ -6,6 +6,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import ErrorBoundary from './ErrorBoundary';  // Importez le composant ErrorBoundary
 
 import App from './app';
+import { AuthProvider } from './context/AuthContext';
+
 
 // ----------------------------------------------------------------------
 
@@ -15,10 +17,12 @@ root.render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <Suspense>
-        <ErrorBoundary>
-          <App />
-        </ErrorBoundary>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ErrorBoundary>
+              <AuthProvider>
+                <App />
+              </AuthProvider>    
+          </ErrorBoundary>
         </Suspense>
       </BrowserRouter>
     </HelmetProvider>

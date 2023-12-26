@@ -5,10 +5,11 @@ import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 
+import API_URL from 'src/config';
+
 import Sort from 'src/components/sort/Sort';
 
-import API_URL from '../../../config';
-import TaskTab from '../components/TaskTab';
+import TaskTab from 'src/sections/taches/components/TaskTab';
 // import TaskCard from '../components/TaskCard';
 
 

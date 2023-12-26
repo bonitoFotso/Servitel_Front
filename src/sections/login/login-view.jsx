@@ -16,6 +16,7 @@ import { useRouter } from 'src/routes/hooks';
 
 import API_URL from 'src/config';
 import { bgGradient } from 'src/theme/css';
+import { useAuth } from 'src/context/AuthContext';
 
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
@@ -23,9 +24,12 @@ import EmailField from 'src/components/form/EmailField';
 import PasswordField from 'src/components/form/passwd/PasswordField';
 
 
+
 // ----------------------------------------------------------------------
 
 export default function LoginView() {
+  const { login } = useAuth();
+
   const theme = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -81,8 +85,16 @@ export default function LoginView() {
         return;
       }
       // Stocker les données utilisateur dans le stockage local (localStorage ou sessionStorage)
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      localStorage.setItem('token', JSON.stringify(response.data.token.access));
+      // localStorage.setItem('user',    JSON.stringify(response.data.user));
+      // localStorage.setItem('token',   JSON.stringify(response.data.token.access));
+      // localStorage.setItem('refresh', JSON.stringify(response.data.token.refresh));
+      login(
+        response.data.user,
+        response.data.technicien,
+        response.data.token.access,
+        response.data.token.refresh,
+      )
+
       // Stocker le token JWT dans les en-têtes des requêtes Axios pour les requêtes ultérieures
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.token.access}`;
 

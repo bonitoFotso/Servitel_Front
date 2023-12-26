@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-import { TacheView } from 'src/sections/taches/view';
+import TechnicienTacheView from 'src/sections/technicienTaches/view/TechnicienTachesView';
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ export default function TachesListPage() {
         <title> Taches </title>
       </Helmet>
 
-      <TacheView />
+      <TechnicienTacheView />
     </>
   );
 }

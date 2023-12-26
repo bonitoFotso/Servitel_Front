@@ -4,6 +4,8 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/dashboard';
 import { TaskFormProvider } from 'src/context/TaskFormContext';
 
+import AuthGuard from './components/AuthGuard';
+
 
 
 export const IndexPage = lazy(() => import('src/pages/app'));
@@ -26,13 +28,15 @@ export default function Router() {
   const routes = useRoutes([
     {
       element: (
-        <TaskFormProvider>
-          <DashboardLayout>
-            <Suspense>
-              <Outlet />
-            </Suspense>
-          </DashboardLayout>
-        </TaskFormProvider>
+          <TaskFormProvider>
+            <DashboardLayout>
+              <Suspense>
+              <AuthGuard>
+                <Outlet />
+              </AuthGuard>
+              </Suspense>
+            </DashboardLayout>
+          </TaskFormProvider>
       ),
       children: [
         { element: <IndexPage />, index: true },
